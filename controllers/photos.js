@@ -80,4 +80,16 @@ router.put("/:id", (req, res, next) => {
 		})
 })
 
+// delete route
+router.delete("/:id", (req, res, next) => {
+	PhotoModel.findByIdAndDelete(req.params.id,
+		(err, photoDeleted) => {
+			if (err) next(err);
+			else {
+				console.log("Delete route:", photoDeleted);
+				res.redirect("/photos");
+			}
+		})
+})
+
 module.exports = router;

@@ -14,5 +14,17 @@
 
 	Description: <%=photo.description%><br/>
 
+	<form method="POST" action="/photos/<%=photo._id%>?_method=DELETE">
+		<input type="submit" name="" value="Delete Photo">
+	</form>
+	<br/>
+	<form action="/photos/<%=photo._id%>/edit">
+		<input type="submit" name="" value="Edit Photo">
+	</form>
+	<br/>
+	<form action="/photos">
+		<input type="submit" name="" value="Return to Photos List">
+	</form>
+
 </body>
 </html>
