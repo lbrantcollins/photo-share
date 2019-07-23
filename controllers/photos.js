@@ -26,6 +26,11 @@ router.get("/", (req, res, next) => {
 	})
 })
 
+// new route
+router.get("/new", (req, res) => {
+	res.render("./photos/new.ejs")
+})
+
 // show route
 router.get("/:id", (req, res, next) => {
 	PhotoModel.findById(req.params.id, (err, photoFound) => {
@@ -37,6 +42,18 @@ router.get("/:id", (req, res, next) => {
 			})
 		}
 	})
+})
+
+// create route
+router.post("/", (req, res, next) => {
+	PhotoModel.create(req.body,
+		(err, photoAdded) => {
+			if (err) next(err);
+			else {
+				console.log("CREATE: ", req.body);
+				res.redirect("/photos");
+			}	
+		})
 })
 
 // edit route
