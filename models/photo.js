@@ -6,7 +6,7 @@ const photoSchema = mongoose.Schema( {
 		type: String,
 		required: true
 	},
-	location: String,
+	title: String,
 	description: String,
 	url: {
 		type: mongoose.SchemaTypes.Url,

@@ -26,4 +26,18 @@ router.get("/", (req, res, next) => {
 	})
 })
 
+// show route
+router.get("/:id", (req, res, next) => {
+	PhotoModel.findById(req.params.id, (err, photoFound) => {
+		if (err) next(err);
+		else {
+			console.log("photoFound:", photoFound);
+			res.render("./photos/show.ejs", {
+				photo: photoFound
+			})
+		}
+	})
+})
+
+
 module.exports = router;
