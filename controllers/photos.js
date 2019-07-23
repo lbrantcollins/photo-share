@@ -82,6 +82,7 @@ router.put("/:id", (req, res, next) => {
 
 // delete route
 router.delete("/:id", (req, res, next) => {
+	console.log("inside delete route");
 	PhotoModel.findByIdAndDelete(req.params.id,
 		(err, photoDeleted) => {
 			if (err) next(err);

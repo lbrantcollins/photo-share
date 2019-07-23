@@ -15,9 +15,16 @@
 <body>
 	<h1>Edit Photo Entry</h1>
 
+	<section id="gallery">
+       <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-6">
+                    <div class="card">
+                        <img class="card-img-top" src="<%=photo.url%>" alt="a photo">
+
 	<form method="POST", action="/photos/<%=photo._id%>?_method=PUT">
 
-		<img src="<%=photo.url%>" alt="a photo" style="width: 400px; height: 400px"><br/>
+		<!-- <img src="<%=photo.url%>" alt="a photo" style="width: 400px; height: 400px"><br/> -->
 		New URL: <input type="url" name="url" width=100 value="<%=photo.url%>"><br/>
 
 		Username: <input type="text" name="username" width=25 value="<%=photo.username%>"><br/>
@@ -26,9 +33,23 @@
 
 		Description: <input type="text" name="description" width=150 height=10 value="<%=photo.description%>"><br/>
 
-		<button>Submit Changes</button>
+		<div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+  </div>
+
+
+		<p>
+			<button class="btn btn-outline-success btn-sm">Submit Changes</button>
+		</p>
 
 	</form>
+
+                    </div>
+                </div>
+            </div>
+       </div>
+    </section>
 
 
 </body>
