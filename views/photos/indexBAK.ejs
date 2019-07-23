@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PhotoBase</title>
+</head>
+<body>
+	<h1>PhotoBase</h1>
+
+		<% for (let i = 0; i < photos.length; i++) { %>
+		
+		<div class="photo-card">
+			<img src="<%=photos[i].url%>" alt="a photo" style="width: 200px; height: 200px"><br/>
+
+			By <%=photos[i].username%><br/>
+
+			Title: <%=photos[i].title%><br/>
+
+			<a href="/photos/<%=photos[i]._id%>">Read More</a> <br/>
+
+		</div>
+
+	<% } %>
+
+</body>
+</html>
