@@ -7,7 +7,7 @@ const photoArray = [
 },
 
 {
-	username: "Judy Cameira",
+	username: "Judy Camiera",
 	title: "In the Flow",
 	description: "Cupcake ipsum dolor sit amet. Donut macaroon macaroon gummi bears bear claw. Sweet bonbon gummi bears bear claw croissant ice cream gummies cotton candy sesame snaps. Chocolate bar bonbon gummi bears. Pie sugar plum cotton candy jujubes lemon drops ice cream apple pie. Lollipop jelly beans sugar plum cotton candy jelly. Halvah danish marshmallow chupa chups.",
 	url: "http://c2.staticflickr.com/8/7218/7209301894_c99d3a33c2_h.jpg"
@@ -25,8 +25,8 @@ const photoArray = [
 	url: "http://c1.staticflickr.com/9/8788/17367410309_78abb9e5b6_b.jpg"
 },
 { 
-	username: "Linda Fokessma",
-	title: "Ride for the Evening",
+	username: "Yushud Fokessmor",
+	title: "Evening Ride",
 	description: "Feta port-salut croque monsieur. Camembert de normandie feta airedale stilton cauliflower cheese parmesan jarlsberg fromage frais. Everyone loves caerphilly when the cheese comes out everybody's happy smelly cheese st. agur blue cheese jarlsberg cream cheese parmesan. Cheese strings caerphilly camembert de normandie cheesy feet swiss lancashire croque monsieur cheese slices. Caerphilly manchego monterey jack cheeseburger cauliflower cheese fondue cheese and biscuits bocconcini.",
 	url: "http://c2.staticflickr.com/6/5814/20700286354_762c19bd3b_b.jpg"
 },
