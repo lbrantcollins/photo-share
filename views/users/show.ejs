@@ -8,7 +8,9 @@
          <div>
             <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
             &nbsp;
-            <button class="btn btn-outline-secondary btn-sm" formaction="/users/<%=user._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Your Account</button>
+            <form class=submit-button>
+               <button class="btn btn-outline-secondary btn-sm" formaction="/users/<%=user._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Your Account</button>
+            </form>
             &nbsp;
             <h1 class=main-header>Photos by <%=user.user%></h1>
          </div>

@@ -53,7 +53,9 @@ router.get('/new', (req, res, next) => {
 
 // show route
 router.get("/:id", (req, res, next) => {
-	PhotoModel.findById(req.params.id).populate('user').exec((err, photoFound) => {
+	PhotoModel.findById(req.params.id)
+	.populate('user')
+	.exec((err, photoFound) => {
 		if (err) next(err);
 		else {
 			console.log("photoFound:", photoFound);
@@ -80,13 +82,15 @@ router.post("/", (req, res, next) => {
 
 // edit route
 router.get("/:id/edit", (req, res, next) => {
-	PhotoModel.findById(req.params.id, (err, photoFound) => {
-		if (err) next(err);
-		else {
-			res.render("./photos/edit.ejs", {
-				photo: photoFound
-			})
-		}
+	PhotoModel.findById(req.params.id)
+		.populate('user')
+		.exec((err, photoFound) => {
+			if (err) next(err);
+			else {
+				res.render("./photos/edit.ejs", {
+					photo: photoFound
+				})
+			}
 	})
 })
 
@@ -105,8 +109,9 @@ router.put("/:id", (req, res, next) => {
 // delete route
 router.delete("/:id", (req, res, next) => {
 	console.log("inside delete route");
-	
-	PhotoModel.findByIdAndDelete(req.params.id).populate('user').exec((err, photoDeleted) => {
+	PhotoModel.findByIdAndDelete(req.params.id)
+		.populate('user')
+		.exec((err, photoDeleted) => {
 			if (err) next(err);
 			else {
 				console.log("\nDelete route photo:", photoDeleted);
