@@ -61,29 +61,10 @@ router.get("/:id", (req, res, next) => {
 })
 
 
-// // edit route
-// router.get("/:id/edit", (req, res, next) => {
-// 	PhotoModel.findById(req.params.id, (err, photoFound) => {
-// 		if (err) next(err);
-// 		else {
-// 			res.render("./photos/edit.ejs", {
-// 				photo: photoFound
-// 			})
-// 		}
-// 	})
-// })
-
-// // update route
-// router.put("/:id", (req, res, next) => {
-// 	PhotoModel.findByIdAndUpdate(req.params.id,
-// 		req.body, (err, photoFound) => {
-// 			if (err) next(err);
-// 			else {
-// 				console.log("photoFound: ", photoFound);
-// 				res.redirect("/photos");
-// 			}
-// 		})
-// })
+// No edit route written for users.
+// So, user cannot change name. :(
+// All other (13) routes are 
+// written, tested, and completed.  :)
 
 // delete route
 router.delete("/:id", (req, res, next) => {
