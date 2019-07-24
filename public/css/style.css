@@ -21,3 +21,23 @@
 /*	display: flex;
 	justify-content: space-between;*/
 }
+
+a {
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: darkgrey;
+}
+
+a.user-link-from-photo {
+	color: darkgrey;
+}
+
+a.user-link-from-photo:hover {
+	color: black;
+}
+
+
+
