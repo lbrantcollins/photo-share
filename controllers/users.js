@@ -85,17 +85,25 @@ router.get("/:id", (req, res, next) => {
 // 		})
 // })
 
-// // delete route
-// router.delete("/:id", (req, res, next) => {
-// 	console.log("inside delete route");
-// 	PhotoModel.findByIdAndDelete(req.params.id,
-// 		(err, photoDeleted) => {
-// 			if (err) next(err);
-// 			else {
-// 				console.log("Delete route:", photoDeleted);
-// 				res.redirect("/photos");
-// 			}
-// 		})
-// })
+// delete route
+router.delete("/:id", (req, res, next) => {
+	console.log("req.body inside delete route");
+	UserModel.findOneAndDelete(req.params.id,
+		(err, userDeleted) => {
+			if (err) next(err);
+			else {
+				console.log("User in delete route:", usersDeleted);
+				PhotoModel.remove({user: req.params.id}, 
+					(err2, docs) => {
+						if (err2) next(err2);
+						else {
+							res.redirect("/users");
+
+						}
+
+				})
+			}
+		})
+})
 
 module.exports = router;
