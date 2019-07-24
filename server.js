@@ -18,6 +18,12 @@ app.use("/photos", photosController);
 const usersController = require("./controllers/users.js");
 app.use("/users", usersController);
 
+// landing page. we don't need a controller
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+});
+
+
 app.listen(3000, () => {
 	console.log("listening... on port 3000");
 })
