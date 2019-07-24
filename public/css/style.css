@@ -9,6 +9,13 @@
 	display: inline-block;
 }
 
+.small-buttons-cluster {
+	display: inline-block;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
 .main-header {
 	display: inline-block;
 /*	display: flex;

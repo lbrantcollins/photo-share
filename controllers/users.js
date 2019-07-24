@@ -44,18 +44,21 @@ router.post("/", (req, res, next) => {
 		})
 })
 
-// // show route
-// router.get("/:id", (req, res, next) => {
-// 	PhotoModel.findById(req.params.id, (err, photoFound) => {
-// 		if (err) next(err);
-// 		else {
-// 			console.log("photoFound:", photoFound);
-// 			res.render("./photos/show.ejs", {
-// 				photo: photoFound
-// 			})
-// 		}
-// 	})
-// })
+// show route
+router.get("/:id", (req, res, next) => {
+	UserModel.findById(req.params.id, (err, userFound) => {
+		if (err) next(err);
+		else {
+			console.log("userFound in show route:", userFound);
+			PhotoModel.find({user: userFound.id}, (err, photosFound) => {
+				res.render("./users/show.ejs", {
+					user: userFound,
+					photos: photosFound
+				})
+			})
+		}
+	})
+})
 
 
 // // edit route

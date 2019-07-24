@@ -5,28 +5,33 @@
 
    <section id="gallery">
       <div class="container">
-         <h1>Photo Details</h1>
+         <div>
+            <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+            &nbsp;
+            <h1 class=main-header>Photos by <%=user.user%></h1>
+         </div>
          <div class="row">
-            <div class="col-lg-6 mb-6">
-               <div class="card">
-                  <img class="card-img-top" src="<%=photo.url%>" alt="a photo">
-                  <div class="card-body">
-                     <h5 class="card-title"><%=photo.title%></h5>
-                     <p class="card-text">by <%=photo.username%></p>
-                     <p class="card-text"><%=photo.description%></p>
-                        <div class=buttons>
-                        	<form class=submit-button>
-                        	  <button class="btn btn-secondary btn-sm" formaction="/photos/<%=photo._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Photo</button>
-                           </form>
+               <% for(let i = 0; i < photos.length; i++) { %>
+                  <div class="col-lg-4 mb-4">
+                     <div class="card">
+                           <img class="card-img-top" src="<%=photos[i].url%>" alt="a photo">
+                           <div class="card-body">
+                              <h5 class="card-title"><%=photos[i].title%></h5>
+                              <p class="card-text"><%=photos[i].description%></p>
+                           <div class=small-buttons-cluster>
+                           	<form class=submit-button>
+                           	  <button class="btn btn-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Photo</button>
+                              </form>
 
-                           <a href="/photos/<%=photo._id%>/edit" class="btn btn-secondary btn-sm">Edit Photo</a>
-                         
-                         	<a href="/photos" class="btn btn-outline-secondary btn-sm">Return to Photos List</a>
-                     	
-                        </div>
+                              <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-secondary btn-sm">Edit Photo</a>
+                            
+                            	<a href="/users" class="btn btn-outline-secondary btn-sm">User List</a>
+                        	
+                           </div>
+                     </div>
                   </div>
                </div>
-            </div>
+            <%}%>
          </div>
       </div>
     </section>

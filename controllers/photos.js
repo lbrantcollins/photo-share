@@ -105,12 +105,14 @@ router.put("/:id", (req, res, next) => {
 // delete route
 router.delete("/:id", (req, res, next) => {
 	console.log("inside delete route");
-	PhotoModel.findByIdAndDelete(req.params.id,
-		(err, photoDeleted) => {
+	
+	PhotoModel.findByIdAndDelete(req.params.id).populate('user').exec((err, photoDeleted) => {
 			if (err) next(err);
 			else {
-				console.log("Delete route:", photoDeleted);
-				res.redirect("/photos");
+				console.log("\nDelete route photo:", photoDeleted);
+				console.log("Delete route user:", photoDeleted.user._id);
+
+				res.redirect("/users/" + photoDeleted.user._id);
 			}
 		})
 })
