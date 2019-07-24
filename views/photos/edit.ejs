@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<%- include("header") -%>
+<%- include("../header") -%>
 <body>
    
 
@@ -28,7 +28,7 @@
                            <div class="input-group-prepend">
                               <span class="input-group-text">Username</span>
                            </div>
-                           <input type="text" class="form-control" name="username" value="<%=photo.username%>" >
+                           <input type="text" class="form-control" name="user" value="<%=photo.user%>" >
                         </div>
                      </div>
 
@@ -46,10 +46,10 @@
                         <textarea class="form-control" name="description" rows="6"><%=photo.description%></textarea>
                      </div>
 
-               		<div class=buttons>
+               		<p class=buttons>
                			<button class="btn btn-secondary btn-sm">Submit Changes</button>
-                        <button class="btn btn-outline-secondary btn-sm">Return to Photos List</button>
-               		</div>
+                        <a href="/photos" class="btn btn-outline-secondary btn-sm">Return to Photos List</a>
+               		</p>
 
                   </form>
 

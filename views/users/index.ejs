@@ -6,28 +6,33 @@
    <section id="gallery">
       <div class="container">
          <div>
-            <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+            <a href="/users/new" class="btn btn-outline-secondary btn-sm">Sign Up</a>
             &nbsp;
             <h1 class=main-header>BW PhotoBase</h1>
          </div>
 
          <div class="row">
+            <div class="col-lg-4 mb-4">
+               <div class="card">
+                  <!-- <div class="card-body"> -->
+                     <ul class="list-group">
+  
 
-            <% for (let i = 0; i < photos.length; i++) { %>
+                        <% for (let i = 0; i < users.length; i++) { %>
 
-               <div class="col-lg-4 mb-4">
-                  <div class="card">
-                     <img class="card-img-top" src="<%=photos[i].url%>" alt="a photo">
-                     <div class="card-body">
-                        <h5 class="card-title"><%=photos[i].title%></h5>
-                        <p class="card-text">by <%=photos[i].user%></p>
-                        <a href="/photos/<%=photos[i]._id%>" class="btn btn-outline-secondary btn-sm">Read More</a>
-                     </div>
-                  </div>
+                           <li class="list-group-item">
+                              <a href="/users/<%=users[i]._id%>">
+                                 <%=users[i].user%>
+                              </a>
+                           </li>
+
+                        <% } %>
+                       
+                     
+                     </ul>
+                  <!-- </div> -->
                </div>
-
-            <% } %>
-
+            </div>
          </div>
       </div>
    </section>

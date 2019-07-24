@@ -13,7 +13,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use (methodOverride("_method"));
 
 const photosController = require("./controllers/photos.js");
-app.use("/photos/", photosController);
+app.use("/photos", photosController);
+
+const usersController = require("./controllers/users.js");
+app.use("/users", usersController);
 
 app.listen(3000, () => {
 	console.log("listening... on port 3000");

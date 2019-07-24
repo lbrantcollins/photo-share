@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const PhotoModel = require("../models/photo.js")
+const PhotoModel = require("../models/photo.js");
+const UserModel = require("../models/user.js");
+
 
 // // populate the database with starter data
 // const photoData = require("../models/photoData.js")

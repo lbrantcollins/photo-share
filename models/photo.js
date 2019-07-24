@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-require("mongoose-type-url")
+require("mongoose-type-url");
 
 const photoSchema = mongoose.Schema( {
-	username: {
-		type: String,
-		required: true
-	},
+	user: {
+    	type: mongoose.Schema.Types.ObjectId,  // user._id
+    	ref: 'User'
+  	},
 	title: String,
 	description: String,
 	url: {
