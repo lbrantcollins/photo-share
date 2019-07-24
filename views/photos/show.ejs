@@ -16,12 +16,12 @@
                      <p class="card-text"><%=photo.description%></p>
                         <div class=buttons>
                         	<form class=submit-button>
-                        	  <button class="btn btn-secondary btn-sm" formaction="/photos/<%=photo._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Photo</button>
+                        	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photo._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
                            </form>
 
-                           <a href="/photos/<%=photo._id%>/edit" class="btn btn-secondary btn-sm">Edit Photo</a>
+                           <a href="/photos/<%=photo._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
                          
-                         	<a href="/photos" class="btn btn-outline-secondary btn-sm">Return to Photos List</a>
+                         	<a href="/photos" class="btn btn-outline-secondary btn-sm">All Photos</a>
                      	
                         </div>
                   </div>

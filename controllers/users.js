@@ -92,7 +92,7 @@ router.delete("/:id", (req, res, next) => {
 		(err, userDeleted) => {
 			if (err) next(err);
 			else {
-				console.log("User in delete route:", usersDeleted);
+				console.log("User in delete route:", userDeleted);
 				PhotoModel.remove({user: req.params.id}, 
 					(err2, docs) => {
 						if (err2) next(err2);

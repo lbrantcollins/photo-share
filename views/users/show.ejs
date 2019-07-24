@@ -22,12 +22,12 @@
                               <p class="card-text"><%=photos[i].description%></p>
                            <div class=small-buttons-cluster>
                            	<form class=submit-button>
-                           	  <button class="btn btn-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Photo</button>
+                           	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
                               </form>
 
-                              <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-secondary btn-sm">Edit Photo</a>
+                              <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
                             
-                            	<a href="/users" class="btn btn-outline-secondary btn-sm">User List</a>
+                            	<a href="/users" class="btn btn-outline-secondary btn-sm">All Users</a>
                         	
                            </div>
                      </div>
