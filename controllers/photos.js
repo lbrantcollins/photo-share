@@ -23,24 +23,44 @@ router.get("/", (req, res, next) => {
 			res.render("./photos/index.ejs", {
 				photos: photosFound
 			})
-
+			console.log("\n photos info in index route for photos");
+			console.log(photosFound);			
 		}
 	})
 })
 
 // new route
-router.get("/new", (req, res) => {
-	res.render("./photos/new.ejs")
-})
+// router.get("/new", (req, res) => {
+// 	res.render("./photos/new.ejs")
+// })
+router.get('/new', (req, res, next) => {
+  // We'll have to find all the users
+  // so we can list them in a dropdown
+  UserModel.find({}, (err, allUsers) => {
+    if(err) next(err);
+    else {
+      console.log(allUsers, "< -- new route in photos ")
+      console.log('users array ^^^^^^^^^^^^^');
+      res.render('./photos/new.ejs', {
+        users: allUsers
+      });
+
+    }
+  })
+
+});
+
 
 // show route
 router.get("/:id", (req, res, next) => {
-	PhotoModel.findById(req.params.id, (err, photoFound) => {
+	PhotoModel.findById(req.params.id).populate('user').exec((err, photoFound) => {
 		if (err) next(err);
 		else {
 			console.log("photoFound:", photoFound);
+			console.log("user:", photoFound.user);
 			res.render("./photos/show.ejs", {
-				photo: photoFound
+				photo: photoFound,
+				user: photoFound.user
 			})
 		}
 	})
