@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const UserModel = require("../models/user.js");
-const PhotoModel = require("../models/photo.js")
+const User = require("../models/user.js");
+const Photo = require("../models/photo.js")
 
 // // populate the database with starter data
 // const photoData = require("../models/photoData.js")
-// PhotoModel.insertMany(photoData, (err, docs) => {
+// Photo.insertMany(photoData, (err, docs) => {
 // 	if (err) {
 // 		console.log(err);
 // 	} else {
@@ -14,9 +14,11 @@ const PhotoModel = require("../models/photo.js")
 // 	}
 // })
 
+
+
 // index route
 router.get("/", (req, res, next) => {
-	UserModel.find({}, (err, usersFound) => {
+	User.find({}, (err, usersFound) => {
 		if (err) next(err);
 		else {
 			res.render("./users/index.ejs", {
@@ -34,7 +36,7 @@ router.get("/new", (req, res) => {
 
 // create route
 router.post("/", (req, res, next) => {
-	UserModel.create(req.body,
+	User.create(req.body,
 		(err, userAdded) => {
 			if (err) next(err);
 			else {
@@ -46,11 +48,11 @@ router.post("/", (req, res, next) => {
 
 // show route
 router.get("/:id", (req, res, next) => {
-	UserModel.findById(req.params.id, (err, userFound) => {
+	User.findById(req.params.id, (err, userFound) => {
 		if (err) next(err);
 		else {
 			console.log("userFound in show route:", userFound);
-			PhotoModel.find({user: userFound.id}, (err, photosFound) => {
+			Photo.find({user: userFound.id}, (err, photosFound) => {
 				res.render("./users/show.ejs", {
 					user: userFound,
 					photos: photosFound
@@ -69,12 +71,12 @@ router.get("/:id", (req, res, next) => {
 // delete route
 router.delete("/:id", (req, res, next) => {
 	console.log("req.body inside delete route");
-	UserModel.findOneAndDelete(req.params.id,
+	User.findOneAndDelete(req.params.id,
 		(err, userDeleted) => {
 			if (err) next(err);
 			else {
 				console.log("User in delete route:", userDeleted);
-				PhotoModel.remove({user: req.params.id}, 
+				Photo.remove({user: req.params.id}, 
 					(err2, docs) => {
 						if (err2) next(err2);
 						else {
