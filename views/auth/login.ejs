@@ -3,15 +3,96 @@
 <%- include("../header") -%>
 <body>
 
-	<form action="auth/login" method="POST" id="login-form">
+	<!-- <form action="/auth/login" method="POST">
 		<p>Log in to your account</p>
 		<input type="text" name="username" placeholder="username"/><br />
 		<input type="password" name="password" placeholder="password"/><br />
 		<button> Log in!<button><br />
 		<small>Need an account?
-			Sign up <a href="", class="toggle" id="show-register">here.</a>
+			Sign up <a href="register">here.</a>
 		</small>
-	</form>
+	</form> -->
+
+	
+<main class="login-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Log in</div>
+                        <div class="card-body">
+
+                            <form action="auth/login" method="POST">
+
+                                <!-- <div class="form-group row">
+                                    <div class="input-group">
+                                        <label for="email_address" class="col-md-4 col-form-label text-md-right">Name</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"> <i class="far fa-user"></i> </span>
+                                                <input type="text" id="name" class="form-control" name="name" required autofocus>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div class="form-group row">
+                                    <div class="input-group">
+                                        <label for="email_address" class="col-md-4 col-form-label text-md-right">Username</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"> <i class="fas fa-user"></i> </span>
+                                                <input type="text" id="username" class="form-control" name="username" required autofocus>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <div class="input-group">
+                                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                                <input type="password" id="password" class="form-control" name="password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="remember"> Remember Me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-secondary btn-sm">
+                                        Log in
+                                    </button>
+                                    <div>
+                                        Not a member?&nbsp;
+                                        <a href="/auth/register" class="btn-link">
+                                            Register
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 </body>
 </html>

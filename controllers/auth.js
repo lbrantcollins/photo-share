@@ -16,6 +16,7 @@ router.get('/register', (req, res) => {
 
 // register post route (create a new user)
 router.post('/register', async (req, res, next) => {
+	console.log("inside register post route");
 
 	try {
 		// check if username already exists
@@ -34,15 +35,20 @@ router.post('/register', async (req, res, next) => {
 			const password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 			const createdUser = await User.create({
 				username: req.body.username,
-				password: password
+				password: password,
+				name: req.body.name
 			})
 			// set user to logged in status
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			req.session.message = "Thanks for signing up, " + createdUser.username + ".";
+			req.session.name = createdUser.name;
+			req.session.message = "Thanks for signing up, " + req.session.name + ".";
 			req.session.status = "good";
 			// redirect to home
 			res.redirect('/');
+			//////////////////////////////////////////////////
+      	// instead, should redirect to photos/user._id
+      	// or an add-a-photo page and then to photos/user._id
 		}
 
 	} catch(err) {
@@ -50,3 +56,63 @@ router.post('/register', async (req, res, next) => {
 	}
 
 })
+
+
+router.post('/login', async (req, res, next) => {
+  // check username password
+
+  const user = await User.findOne({username: req.body.username})
+
+  // if !user
+  if(!user) {
+    console.log("user does not exist");
+    // session msg inval user or pass
+    req.session.message = "invalid username or password"
+    req.session.status = "bad";
+    // redirect auth
+    res.redirect('/login')
+
+  }
+  // else (user exists)
+  else {
+    // if good pw
+    if(bcrypt.compareSync(req.body.password, user.password)==true) {
+      // log in
+      req.session.loggedIn = true
+      req.session.username = user.username
+      req.session.name = user.name
+      req.session.message = "Welcome back, " + req.session.name + ".";
+      req.session.status = "good";
+      console.log("user successfully logged in");
+      // redirect home
+      res.redirect('/') 
+      //////////////////////////////////////////////////
+      // instead, should redirect to photos/user._id
+
+    }
+    // else (bad pw)
+    else {
+      console.log("bad password");
+      // session msg inval user or pass
+      req.session.message = "invalid username or password"
+      req.session.status = "bad";
+      // redirect auth
+      res.redirect('/login')
+    }
+
+  }
+
+})
+
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy((err, data) => {
+    if(err) next(err);
+    else {
+      res.redirect('/')
+    }
+  })
+})
+
+module.exports = router;
+

@@ -34,12 +34,10 @@ app.get('/', (req, res) => {
 });
 
 // default URLs for controllers
-const photosNonUsersController = require("./controllers/photosNonUsers.js");
-app.use("/", photosNonUsersController);
-const photosUsersController = require("./controllers/photosUsers.js");
-app.use('/photos', photosUsersController)
-const usersController = require("./controllers/users.js");
-app.use("/users", usersController);
+const photosController = require("./controllers/photos.js");
+app.use("/photos", photosController);
+const usersController = require("./controllers/auth.js");
+app.use("/auth", usersController);
 
 // start up the server at localhost:PORT/
 app.listen(PORT, () => {

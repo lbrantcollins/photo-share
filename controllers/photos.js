@@ -16,6 +16,22 @@ const User = require("../models/user.js");
 
 // the other two routes (index, show) are in photos.js controller
 
+// index route
+router.get("/", (req, res, next) => {
+	Photo.find({}, (err, photosFound) => {
+		if (err) next(err);
+		else {
+			res.render("./photos/index.ejs", {
+				photos: photosFound
+			})
+			console.log("\n photos info in index route for photos");
+			console.log(photosFound);			
+		}
+	})
+})
+
+
+
 
 
 
@@ -40,6 +56,24 @@ router.get('/new', (req, res, next) => {
   })
 
 });
+
+// show route
+router.get("/:id", (req, res, next) => {
+	Photo.findById(req.params.id)
+	.populate('user')
+	.exec((err, photoFound) => {
+		if (err) next(err);
+		else {
+			console.log("photoFound:", photoFound);
+			console.log("user:", photoFound.user);
+			res.render("./photos/show.ejs", {
+				photo: photoFound,
+				user: photoFound.user
+			})
+		}
+	})
+})
+
 
 
 // create route
