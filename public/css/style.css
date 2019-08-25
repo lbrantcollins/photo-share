@@ -39,7 +39,7 @@ a.user-link-from-photo:hover {
 	color: black;
 }
 
-.login-form {
+.login-form, .register-form{
 	margin-top: 15%;
 }
 

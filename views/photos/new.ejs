@@ -12,14 +12,7 @@
             <div class="col-lg-6 mb-6">
                <div class="card">
                   
-                  <form method="POST", action="/photos">
-
-                     <select name="user">
-                        <% for (let i = 0; i < users.length; i++) {%>
-                           <option value="<%=users[i]._id%>"><%=users[i].user%></option>
-                        <%}%>
-                     </select>
-                     <br/>
+                  <form method="POST", action="/photos/<%=userId%>">
 
                      <div class=form-group>
                         <div class="input-group">

@@ -28,6 +28,33 @@ app.use(session({
   saveUninitialized: false // Good practice!  (legally required?)
 }))
 
+// custom middleware to help with handling user auth messages
+app.use( (req, res, next) => {
+	console.log("custom middleware is running");
+	console.log("req.session ------>\n", req.session);
+	console.log("req.session.userId ---> ", req.session.userId);
+	// vars stored in res.locals are avail in any ejs when rendered
+	res.locals.loggedIn = req.session.loggedIn;
+	res.locals.admin = req.session.admin;
+	res.locals.username = req.session.username;
+	res.locals.userId = req.session.userId;
+	res.locals.name = req.session.name;
+
+	if(req.session.message) {
+		res.locals.message = req.session.message;
+		res.locals.status = req.session.status;
+	} else {
+		res.locals.message = undefined;
+		res.locals.status = undefined;
+	}
+
+	req.session.message = undefined;
+	req.session.status = undefined;
+
+	next();
+})
+
+
 // landing page. we don't need a controller
 app.get('/', (req, res) => {
   res.render('index.ejs');

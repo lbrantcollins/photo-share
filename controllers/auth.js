@@ -41,11 +41,12 @@ router.post('/register', async (req, res, next) => {
 			// set user to logged in status
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
+      req.session.userId = createdUser._id;
 			req.session.name = createdUser.name;
 			req.session.message = "Thanks for signing up, " + req.session.name + ".";
 			req.session.status = "good";
 			// redirect to home
-			res.redirect('/');
+			res.redirect('/photos');
 			//////////////////////////////////////////////////
       	// instead, should redirect to photos/user._id
       	// or an add-a-photo page and then to photos/user._id
@@ -80,12 +81,13 @@ router.post('/login', async (req, res, next) => {
       // log in
       req.session.loggedIn = true
       req.session.username = user.username
+      req.session.userId = user._id;
       req.session.name = user.name
       req.session.message = "Welcome back, " + req.session.name + ".";
       req.session.status = "good";
       console.log("user successfully logged in");
       // redirect home
-      res.redirect('/') 
+      res.redirect('/photos') 
       //////////////////////////////////////////////////
       // instead, should redirect to photos/user._id
 

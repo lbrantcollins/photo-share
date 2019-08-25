@@ -1,17 +1,17 @@
 {
-  "name": "hw16-photo-site",
+  "name": "photo-share",
   "version": "1.0.0",
-  "description": "display photo database with username 'access'",
+  "description": "display photo database with user authentication",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://git.generalassemb.ly/lbrantcollins/hw16-photo-site.git"
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.0"
   },
-  "author": "",
+  "author": "Brant Collins",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
