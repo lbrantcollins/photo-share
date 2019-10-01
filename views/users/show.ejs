@@ -6,7 +6,12 @@
    <section id="gallery">
       <div class="container">
          <div>
+            <a href="/freephotos" class="btn btn-outline-secondary btn-sm">All Photos</a>
+            &nbsp;
+            &nbsp;
+
             <h1 class=main-header>Photos by <%=user.name%></h1>
+
             &nbsp;
             &nbsp;
             <%if (userId === user._id) {%>
@@ -25,16 +30,18 @@
                            <div class="card-body">
                               <h5 class="card-title"><%=photos[i].title%></h5>
                               <p class="card-text"><%=photos[i].description%></p>
-                           <div class=small-buttons-cluster>
-                           	<form class=submit-button>
-                           	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
-                              </form>
+                           <% if (userId === user._id) {%>
+                              <div class=small-buttons-cluster>
+                              	<form class=submit-button>
+                              	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
+                                 </form>
 
-                              <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
-                            
-                            	<a href="/users" class="btn btn-outline-secondary btn-sm">All Users</a>
-                        	
-                           </div>
+                                 <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                               
+                               	<!-- <a href="/users" class="btn btn-outline-secondary btn-sm">All Users</a> -->
+                           	
+                              </div>
+                           <% } %>
                      </div>
                   </div>
                </div>
