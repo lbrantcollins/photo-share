@@ -14,7 +14,8 @@ router.get("/", (req, res, next) => {
 		if (err) next(err);
 		else {
 			res.render("./photos/index.ejs", {
-				photos: photosFound
+				photos: photosFound,
+				loggedIn: req.session.loggedIn
 			})
 			console.log("\n photos info in index route for photos");
 			console.log(photosFound);			

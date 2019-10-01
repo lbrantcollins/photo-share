@@ -6,9 +6,17 @@
    <section id="gallery">
       <div class="container">
          <div>
-            <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+            <a href="/" class="btn btn-outline-secondary btn-sm">Home</a>
             &nbsp;
-            <h1 class=main-header><a href="/">BW PhotoBase</a></h1>
+            &nbsp;
+
+            <h1 class=main-header>BW PhotoBase</a></h1>
+
+            <% if (loggedIn) {%>
+            &nbsp;
+            &nbsp;
+               <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+            <% } %>
          </div>
 
          <div class="row">
