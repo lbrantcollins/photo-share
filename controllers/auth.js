@@ -68,7 +68,7 @@ router.post('/login', async (req, res, next) => {
     req.session.message = "invalid username or password"
     req.session.status = "bad";
     // redirect auth
-    res.redirect('/login')
+    res.redirect('/auth/login')
 
   }
   // else (user exists)
@@ -93,7 +93,7 @@ router.post('/login', async (req, res, next) => {
       req.session.message = "invalid username or password"
       req.session.status = "bad";
       // redirect auth
-      res.redirect('/login')
+      res.redirect('/auth/login')
     }
 
   }

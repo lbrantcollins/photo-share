@@ -12,9 +12,9 @@
 
             <h1 class=main-header>Photos by <%=user.name%></h1>
 
-            &nbsp;
-            &nbsp;
-            <%if (userId === user._id) {%>
+            <%if (loggedIn && (userId == user._id)) {%>
+               &nbsp;
+               &nbsp;
                <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
                &nbsp;
                <form class=submit-button>
@@ -30,7 +30,7 @@
                            <div class="card-body">
                               <h5 class="card-title"><%=photos[i].title%></h5>
                               <p class="card-text"><%=photos[i].description%></p>
-                           <% if (userId === user._id) {%>
+                           <% if (loggedIn && (userId == user._id)) {%>
                               <div class=small-buttons-cluster>
                               	<form class=submit-button>
                               	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
