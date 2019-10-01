@@ -46,10 +46,7 @@ router.post('/register', async (req, res, next) => {
 			req.session.message = "Thanks for signing up, " + req.session.name + ".";
 			req.session.status = "good";
 			// redirect to home
-			res.redirect('/photos');
-			//////////////////////////////////////////////////
-      	// instead, should redirect to photos/user._id
-      	// or an add-a-photo page and then to photos/user._id
+			res.redirect('/freephotos');
 		}
 
 	} catch(err) {
@@ -87,10 +84,7 @@ router.post('/login', async (req, res, next) => {
       req.session.status = "good";
       console.log("user successfully logged in");
       // redirect home
-      res.redirect('/photos') 
-      //////////////////////////////////////////////////
-      // instead, should redirect to photos/user._id
-
+      res.redirect('/users/' + user._id) 
     }
     // else (bad pw)
     else {

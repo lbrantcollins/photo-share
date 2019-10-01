@@ -48,14 +48,18 @@ router.post("/", (req, res, next) => {
 
 // show route
 router.get("/:id", (req, res, next) => {
+	console.log("Inside /users/:id to show photos for a user");
 	User.findById(req.params.id, (err, userFound) => {
 		if (err) next(err);
 		else {
 			console.log("userFound in show route:", userFound);
-			Photo.find({user: userFound.id}, (err, photosFound) => {
+			Photo.find({user: userFound._id}, (err, photosFound) => {
 				res.render("./users/show.ejs", {
 					user: userFound,
-					photos: photosFound
+					photos: photosFound,
+					userId: req.session.id,
+					loggedIn: req.session.loggedIn
+
 				})
 			})
 		}

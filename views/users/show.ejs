@@ -6,13 +6,16 @@
    <section id="gallery">
       <div class="container">
          <div>
-            <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+            <h1 class=main-header>Photos by <%=user.name%></h1>
             &nbsp;
-            <form class=submit-button>
-               <button class="btn btn-outline-secondary btn-sm" formaction="/users/<%=user._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Your Account</button>
-            </form>
             &nbsp;
-            <h1 class=main-header>Photos by <%=user.user%></h1>
+            <%if (userId === user._id) {%>
+               <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+               &nbsp;
+               <form class=submit-button>
+                  <button class="btn btn-outline-secondary btn-sm" formaction="/users/<%=user._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Your Account</button>
+               </form>
+            <%}%>
          </div>
          <div class="row">
                <% for(let i = 0; i < photos.length; i++) { %>

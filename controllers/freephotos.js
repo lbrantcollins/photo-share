@@ -34,7 +34,8 @@ router.get("/:id", (req, res, next) => {
 			console.log("user:", photoFound.user);
 			res.render("./photos/show.ejs", {
 				photo: photoFound,
-				user: photoFound.user
+				loggedIn: req.session.loggedIn,
+				userId: req.session.id
 			})
 		}
 	})

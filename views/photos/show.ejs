@@ -12,16 +12,18 @@
                   <img class="card-img-top" src="<%=photo.url%>" alt="a photo">
                   <div class="card-body">
                      <h5 class="card-title"><%=photo.title%></h5>
-                     <p class="card-text">by <a class="user-link-from-photo"href="/users/<%=user._id%>" ><%=user.user%></a></p>
+                     <p class="card-text">by <a class="user-link-from-photo" href="/users/<%=photo.user._id%>" ><%=photo.user.name%></a></p>
                      <p class="card-text"><%=photo.description%></p>
                         <div class=buttons>
-                        	<form class=submit-button>
-                        	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photo._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
-                           </form>
+                           <%if (loggedIn && (userId === photo.user._id)) {%>
+                           	<form class=submit-button>
+                           	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photo._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
+                              </form>
 
-                           <a href="/photos/<%=photo._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                              <a href="/photos/<%=photo._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                           <%}%>
                          
-                         	<a href="/photos" class="btn btn-outline-secondary btn-sm">All Photos</a>
+                         	<a href="/freephotos" class="btn btn-outline-secondary btn-sm">All Photos</a>
                      	
                         </div>
                   </div>

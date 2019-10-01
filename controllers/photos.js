@@ -4,33 +4,17 @@ const router = express.Router();
 const Photo = require("../models/photo.js");
 const User = require("../models/user.js");
 
-// const requireAuth = require('../lib/requireAuth')
+const requireAuth = require('../lib/requireAuth')
 
 // router-level custom middleware that will block
 // block this specific controller to those who aren't logged in
 
-// router.use(requireAuth)
+router.use(requireAuth)
 
 // That is, if not logged in, cannot hit these routes:
 // new/create, edit/update, destroy
 
 // the other two routes (index, show) are in photos.js controller
-
-// index route
-router.get("/", (req, res, next) => {
-	Photo.find({}, (err, photosFound) => {
-		if (err) next(err);
-		else {
-			res.render("./photos/index.ejs", {
-				photos: photosFound
-			})
-			console.log("\n photos info in index route for photos");
-			console.log(photosFound);			
-		}
-	})
-})
-
-
 
 
 
@@ -57,34 +41,22 @@ router.get('/new', (req, res, next) => {
 
 });
 
-// show route
-router.get("/:id", (req, res, next) => {
-	Photo.findById(req.params.id)
-	.populate('user')
-	.exec((err, photoFound) => {
-		if (err) next(err);
-		else {
-			console.log("photoFound:", photoFound);
-			console.log("user:", photoFound.user);
-			res.render("./photos/show.ejs", {
-				photo: photoFound,
-				user: photoFound.user
-			})
-		}
-	})
-})
-
-
 
 // create route
 ///////////////////////////////////////////////////
-router.post("/", (req, res, next) => {
-	Photo.create(req.body,
+router.post("/:id", (req, res, next) => {
+	const newPhoto = {
+		user: req.params.id,
+		title: req.body.title,
+		description: req.body.description,
+		url: req.body.url
+	}
+	Photo.create(newPhoto,
 		(err, photoAdded) => {
 			if (err) next(err);
 			else {
 				console.log("CREATE: ", req.body);
-				res.redirect("/photos");
+				res.redirect("/freephotos");
 			}	
 		})
 })
@@ -112,7 +84,7 @@ router.put("/:id", (req, res, next) => {
 			if (err) next(err);
 			else {
 				console.log("photoFound: ", photoFound);
-				res.redirect("/photos");
+				res.redirect("/photos/" + req.params.id);
 			}
 		})
 })

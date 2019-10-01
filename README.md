@@ -1,5 +1,14 @@
 # photo-share
 
+## Technologies
+
+##### HTML, CSS, Bootstrap
+
+##### JavaScript, Node.js with express (and sessions)
+
+##### MongoDB and mongoose
+
+
 ## Full CRUD for photos
 
 ##### CREATE: User can add a photo (by URL)
@@ -10,7 +19,8 @@
 
 ##### DESTROY: User can remove their own posts
 
-## Full CRUD for photos
+
+## Full CRUD for users
 
 ##### CREATE: User can register
 
