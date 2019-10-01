@@ -48,16 +48,9 @@ router.post("/", (req, res, next) => {
 
 // show route
 router.get("/:id", (req, res, next) => {
-	console.log("Inside /users/:id to show photos for a user");
 	User.findById(req.params.id, (err, userFound) => {
 		if (err) next(err);
 		else {
-			console.log("user is logged in? ", req.session.loggedIn);
-			console.log("userFound in show route:", userFound);
-			console.log("user currently logged in: ", req.session.userId);
-
-			console.log("type for user._id: ", typeof userFound._id);
-			console.log("type for req.session.userId: ", typeof req.session.userId);
 			Photo.find({user: userFound._id}, (err, photosFound) => {
 				res.render("./users/show.ejs", {
 					user: userFound,
@@ -73,9 +66,7 @@ router.get("/:id", (req, res, next) => {
 
 
 // No edit route written for users.
-// So, user cannot change name. :(
-// All other (13) routes are 
-// written, tested, and completed.  :)
+// i.e., user cannot change name.
 
 // delete route
 router.delete("/:id", (req, res, next) => {
@@ -89,7 +80,7 @@ router.delete("/:id", (req, res, next) => {
 					(err2, docs) => {
 						if (err2) next(err2);
 						else {
-							res.redirect("/freephotos");
+							res.redirect("/");
 
 						}
 

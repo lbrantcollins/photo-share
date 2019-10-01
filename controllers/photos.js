@@ -30,8 +30,6 @@ router.get('/new', (req, res, next) => {
   User.find({}, (err, allUsers) => {
     if(err) next(err);
     else {
-      console.log(allUsers, "< -- new route in photos ")
-      console.log('users array ^^^^^^^^^^^^^');
       res.render('./photos/new.ejs', {
         users: allUsers
       });
@@ -79,12 +77,17 @@ router.get("/:id/edit", (req, res, next) => {
 // update route
 ///////////////////////////////////////////////////
 router.put("/:id", (req, res, next) => {
+	const payload = {
+		user: req.session.userId,
+		url: req.body.url,
+		title: req.body.title,
+		description: req.body.description
+	}
 	Photo.findByIdAndUpdate(req.params.id,
-		req.body, (err, photoFound) => {
+		payload, (err, photoFound) => {
 			if (err) next(err);
 			else {
-				console.log("photoFound: ", photoFound);
-				res.redirect("/photos/" + req.params.id);
+				res.redirect("/users/" + photoFound.user._id);
 			}
 		})
 })
@@ -92,15 +95,11 @@ router.put("/:id", (req, res, next) => {
 // delete route
 ///////////////////////////////////////////////////
 router.delete("/:id", (req, res, next) => {
-	console.log("inside delete route");
 	Photo.findByIdAndDelete(req.params.id)
 		.populate('user')
 		.exec((err, photoDeleted) => {
 			if (err) next(err);
 			else {
-				console.log("\nDelete route photo:", photoDeleted);
-				console.log("Delete route user:", photoDeleted.user._id);
-
 				res.redirect("/users/" + photoDeleted.user._id);
 			}
 		})
