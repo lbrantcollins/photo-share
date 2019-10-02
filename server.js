@@ -10,7 +10,8 @@ const session 			= require('express-session');
 const app 				= express();
 
 // port for server: localhost:PORT/
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // bring in the database setup
 require("./db/db");
