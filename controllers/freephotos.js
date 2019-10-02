@@ -15,10 +15,9 @@ router.get("/", (req, res, next) => {
 		else {
 			res.render("./photos/index.ejs", {
 				photos: photosFound,
-				loggedIn: req.session.loggedIn
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId
 			})
-			console.log("\n photos info in index route for photos");
-			console.log(photosFound);			
 		}
 	})
 })
@@ -31,8 +30,6 @@ router.get("/:id", (req, res, next) => {
 	.exec((err, photoFound) => {
 		if (err) next(err);
 		else {
-			console.log("photoFound:", photoFound);
-			console.log("user:", photoFound.user);
 			res.render("./photos/show.ejs", {
 				photo: photoFound,
 				loggedIn: req.session.loggedIn,

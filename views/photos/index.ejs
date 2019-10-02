@@ -15,7 +15,7 @@
             <% if (loggedIn) {%>
             &nbsp;
             &nbsp;
-               <a href="/photos/new" class="btn btn-outline-secondary btn-sm">Add a Photo</a>
+               <a href="/users/<%=userId%>" class="btn btn-outline-secondary btn-sm">My Photos</a>
             <% } %>
          </div>
 
@@ -29,7 +29,7 @@
                      <div class="card-body">
                         <h5 class="card-title"><%=photos[i].title%></h5>
                         <!-- <p class="card-text">by <%=photos[i].user%></p> -->
-                        <a href="/freephotos/<%=photos[i]._id%>" class="btn btn-outline-secondary btn-sm">Read More</a>
+                        <a href="/freephotos/<%=photos[i]._id%>" class="btn btn-outline-secondary btn-sm">Details</a>
                      </div>
                   </div>
                </div>

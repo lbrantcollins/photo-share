@@ -80,6 +80,7 @@ router.delete("/:id", (req, res, next) => {
 					(err2, docs) => {
 						if (err2) next(err2);
 						else {
+							req.session.loggedIn = false;
 							res.redirect("/");
 
 						}
