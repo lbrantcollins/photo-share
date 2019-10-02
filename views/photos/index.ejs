@@ -13,9 +13,12 @@
             <h1 class=main-header>BW PhotoBase</a></h1>
 
             <% if (loggedIn) {%>
-            &nbsp;
-            &nbsp;
+               &nbsp;
+               &nbsp;
                <a href="/users/<%=userId%>" class="btn btn-outline-secondary btn-sm">My Photos</a>
+               &nbsp;
+               &nbsp;
+               <a href="/auth/logout" class="btn btn-outline-secondary btn-sm">Log Out</a>
             <% } %>
          </div>
 

@@ -54,7 +54,7 @@ router.post("/:id", (req, res, next) => {
 			if (err) next(err);
 			else {
 				console.log("CREATE: ", req.body);
-				res.redirect("/freephotos");
+				res.redirect("/users/" + req.params.id);
 			}	
 		})
 })
@@ -67,6 +67,8 @@ router.get("/:id/edit", (req, res, next) => {
 		.exec((err, photoFound) => {
 			if (err) next(err);
 			else {
+				console.log("photoFound in photos edit route");
+				console.log(photoFound);
 				res.render("./photos/edit.ejs", {
 					photo: photoFound
 				})

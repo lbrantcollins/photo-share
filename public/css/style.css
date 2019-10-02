@@ -31,9 +31,9 @@ a:hover {
 	color: darkgrey;
 }
 
-a.user-link-from-photo {
+/*a.user-link-from-photo {
 	color: darkgrey;
-}
+}*/
 
 a.user-link-from-photo:hover {
 	color: black;

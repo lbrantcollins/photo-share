@@ -20,6 +20,9 @@
                <form class=submit-button>
                   <button class="btn btn-outline-secondary btn-sm" formaction="/users/<%=user._id%>?_method=DELETE" formmethod="POST" type="submit">Delete Your Account</button>
                </form>
+               &nbsp;
+               &nbsp;
+               <a href="/auth/logout" class="btn btn-outline-secondary btn-sm">Log Out</a>
             <%}%>
          </div>
          <div class="row">
@@ -32,11 +35,11 @@
                               <p class="card-text"><%=photos[i].description%></p>
                            <% if (loggedIn && (userId == user._id)) {%>
                               <div class=small-buttons-cluster>
+                                 <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+
                               	<form class=submit-button>
                               	  <button class="btn btn-outline-secondary btn-sm" formaction="/photos/<%=photos[i]._id%>?_method=DELETE" formmethod="POST" type="submit">Delete</button>
-                                 </form>
-
-                                 <a href="/photos/<%=photos[i]._id%>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                                 </form>                              
                                
                                	<!-- <a href="/users" class="btn btn-outline-secondary btn-sm">All Users</a> -->
                            	

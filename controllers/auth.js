@@ -100,8 +100,9 @@ router.post('/login', async (req, res, next) => {
 
 })
 
-
+// logout
 router.get('/logout', (req, res, next) => {
+  console.log("----> inside logout route <----");
   req.session.destroy((err, data) => {
     if(err) next(err);
     else {
