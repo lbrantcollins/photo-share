@@ -1,9 +1,18 @@
 const mongoose = require("mongoose");
 
-const connectionString = "mongodb://localhost/photoData";
+// const connectionString = "mongodb://localhost/photoData";
+
+let connectionString
+
+if (process.env.NODE_ENV === "production") {
+	connectionString = process.env.DB_URL;
+} else {
+	connectionString = 'mongodb://localhost/photoData';
+}
 
 mongoose.connect(connectionString, {
-	useNewUrlParser: true
+	useNewUrlParser: true,
+	useCreateIndex: true
 });
 
 mongoose.connection.on("connected", () => {
